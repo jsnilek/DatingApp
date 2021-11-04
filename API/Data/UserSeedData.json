@@ -108,7 +108,7 @@
     "Country": "Swaziland",
     "Photos": [
       {
-        "Url": "https://randomuser.me/api/portraits/man/36.jpg",
+        "Url": "https://randomuser.me/api/portraits/men/36.jpg",
         "IsMain": true
       }
     ]
@@ -127,7 +127,7 @@
     "Country": "Cuba",
     "Photos": [
       {
-        "Url": "https://randomuser.me/api/portraits/man/39.jpg",
+        "Url": "https://randomuser.me/api/portraits/men/39.jpg",
         "IsMain": true
       }
     ]
@@ -146,7 +146,7 @@
     "Country": "Mauritius",
     "Photos": [
       {
-        "Url": "https://randomuser.me/api/portraits/man/42.jpg",
+        "Url": "https://randomuser.me/api/portraits/men/42.jpg",
         "IsMain": true
       }
     ]
@@ -165,7 +165,7 @@
     "Country": "Czech Republic",
     "Photos": [
       {
-        "Url": "https://randomuser.me/api/portraits/man/78.jpg",
+        "Url": "https://randomuser.me/api/portraits/men/78.jpg",
         "IsMain": true
       }
     ]
@@ -184,7 +184,7 @@
     "Country": "French Polynesia",
     "Photos": [
       {
-        "Url": "https://randomuser.me/api/portraits/man/72.jpg",
+        "Url": "https://randomuser.me/api/portraits/men/72.jpg",
         "IsMain": true
       }
     ]
