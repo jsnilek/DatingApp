@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 import {ToastrModule} from "ngx-toastr";
 import {TabsModule} from "ngx-bootstrap/tabs";
@@ -27,7 +27,7 @@ import {ModalModule} from "ngx-bootstrap/modal";
     TimeagoModule.forRoot(),
     ModalModule.forRoot()
   ],
-  exports:[
+  exports: [
     BsDropdownModule,
     ToastrModule,
     TabsModule,
@@ -40,4 +40,5 @@ import {ModalModule} from "ngx-bootstrap/modal";
     ModalModule
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}
