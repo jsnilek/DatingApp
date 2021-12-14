@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace API.Interfaces
 {
@@ -13,6 +14,8 @@ namespace API.Interfaces
         public string RecipientPhotoUrl { get; set; }
         public string Content { get; set; }
         public DateTime? DataRead { get; set; }
-        public DateTime MessageSent { get; set; } = DateTime.Now;
+        public DateTime MessageSent { get; set; }
+        [JsonIgnore] public bool SenderDeleted { get; set; }
+        [JsonIgnore] public bool RecipientDeleted { get; set; }
     }
 }
