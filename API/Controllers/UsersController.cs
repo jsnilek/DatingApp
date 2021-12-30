@@ -20,7 +20,7 @@ namespace API.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IPhotoService _photoService;
 
-        public UsersController(IMapper mapper, IUnitOfWork unitOfWork,IPhotoService photoService)
+        public UsersController(IMapper mapper, IUnitOfWork unitOfWork, IPhotoService photoService)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
@@ -38,10 +38,12 @@ namespace API.Controllers
             Response.AddPaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
             return Ok(users);
         }
+
         [HttpGet("{username}", Name = "GetUser")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
-            return await _unitOfWork.UserRepository.GetMemberAsync(username);
+            var currentUsername = User.GetUsername();
+            return await _unitOfWork.UserRepository.GetMemberAsync(username, currentUsername == username);
         }
 
         [HttpPut]
@@ -67,11 +69,6 @@ namespace API.Controllers
                 Url = result.SecureUrl.AbsoluteUri,
                 PublicId = result.PublicId
             };
-
-            if (user.Photos.Count == 0)
-            {
-                photo.IsMain = true;
-            }
 
             user.Photos.Add(photo);
 

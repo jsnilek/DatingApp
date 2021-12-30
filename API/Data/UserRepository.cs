@@ -8,6 +8,7 @@ using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
@@ -43,6 +44,12 @@ namespace API.Data
             return await _context.Users.Include(p => p.Photos).SingleOrDefaultAsync(x => x.UserName == username);
         }
 
+        public async Task<AppUser> GetUserByPhotoId(int photoId)
+        {
+            return await _context.Users.Include(p => p.Photos).IgnoreQueryFilters()
+                .Where(u => u.Photos.Any(p => p.Id == photoId)).FirstOrDefaultAsync();
+        }
+
         public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
         {
             var query = _context.Users.AsQueryable();
@@ -66,11 +73,12 @@ namespace API.Data
                 userParams.PageSize);
         }
 
-        public async Task<MemberDto> GetMemberAsync(string username)
+        public async Task<MemberDto> GetMemberAsync(string username, bool isCurrentUser)
         {
-            return await _context.Users.Where(x => x.UserName == username)
-                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-                .SingleOrDefaultAsync();
+            var query = _context.Users.Where(x => x.UserName == username)
+                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider);
+            if (isCurrentUser) query = query.IgnoreQueryFilters();
+            return await query.SingleOrDefaultAsync();
         }
 
         public async Task<string> GetUserGender(string username)
